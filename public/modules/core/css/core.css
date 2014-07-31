@@ -1,0 +1,33 @@
+.content {
+    margin-top: 50px;
+}
+.undecorated-link:hover {
+    text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.well {
+    padding: 25px;
+    margin-top: 50px;
+}
+
+.leaflet {
+    height: 600px;
+    padding: 25px;
+    margin-top: 10px;
+}
+
+.map {
+    height: 180px;
+}
+
+h2 {
+    color: #245269;
+    font-weight: bold;
+}
+
+p {
+    color: #245269;
+}
