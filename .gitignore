@@ -2,6 +2,7 @@
 .nodemonignore
 .sass-cache/
 npm-debug.log
+app/controllers/keyData.js
 node_modules/
 app/tests/coverage/
 .bower-*/

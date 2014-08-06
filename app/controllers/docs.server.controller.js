@@ -7,6 +7,9 @@ var mongoose = require('mongoose'),
 	Doc = mongoose.model('Doc'),
 	_ = require('lodash');
 
+var Twit = require('twit');
+var keys = require('./keyData').keys;
+
 /**
  * Get the error message from error object
  */
@@ -95,15 +98,24 @@ exports.delete = function(req, res) {
 /**
  * List of Docs
  */
-exports.list = function(req, res) { Doc.find().sort('-created').populate('user', 'displayName').exec(function(err, docs) {
-		if (err) {
-			return res.send(400, {
-				message: getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(docs);
-		}
-	});
+exports.list = function(req, res) {
+    var T = new Twit(keys);
+
+    T.get('search/tweets', { q: 'gunshot OR gun shot OR gunshots OR gun shots AND heard since:2011-11-11', count: 100 }, function(err, data, response) {
+        res.jsonp(data);
+    });
+
+
+
+//    Doc.find().sort('-created').populate('user', 'displayName').exec(function(err, docs) {
+//		if (err) {
+//			return res.send(400, {
+//				message: getErrorMessage(err)
+//			});
+//		} else {
+//			res.jsonp(docs);
+//		}
+//	});
 };
 
 /**
