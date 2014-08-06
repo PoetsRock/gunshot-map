@@ -1,6 +1,7 @@
 'use strict';
 
 
+
 angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$http', '$templateCache',
     function($scope, Authentication, $http, $templateCache) {
         // This provides Authentication context.
@@ -30,20 +31,31 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                 $scope.status = status;
             });
 
-        angular.extend($scope, {
-            center: {
-                lat: 40.7593879,
-                lng: -111.8850502,
-                zoom: 13
-            },
-            defaults: {
-                tileLayer: 'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-                path: {
-                    weight: 10,
-                    color: '#800000',
-                    opacity: 1
-                }
-            }
-        });
+        $scope.mapFunction = function() {
+            var map = L.map('map').setView([40.7593879,-111.8850502], 13);
+
+            L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                maxZoom: 18,
+
+                id: "poetsrock.map-55znsh8b"
+            }).addTo(map);
+        };
+
+//        angular.extend($scope, {
+//            center: {
+//                lat: 40.7593879,
+//                lng: -111.8850502,
+//                zoom: 13
+//            },
+//            defaults: {
+//                tileLayer: 'http://{s}.tiles.mapbox.com/v3/poetsrock.map-55znsh8b/{z}/{x}/{y}.png',
+//                path: {
+//                    weight: 10,
+//                    color: '#800000',
+//                    opacity: 1
+//                }
+//            }
+//        });
     }
 ]);
