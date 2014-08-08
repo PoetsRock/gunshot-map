@@ -2,14 +2,15 @@
     <div class="page-header">
         <h1>Docs</h1>
     </div>
+    <script type="text/javascript">console.log(data);</script>
     <div class="list-group">
-        <a data-ng-repeat="doc in docs" data-ng-href="#!/docs/{{doc._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="doc.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="doc.user.displayName"></span>
-			</small>
+        <a data-ng-repeat="doc in docs" class="list-group-item">
+			<div class="text-info">
+                <span data-ng-bind="doc.text"></span>
+				<span data-ng-bind="doc.user.name"></span>
+                <span data-ng-bind="doc.place.full_name"></span>
+                <span data-ng-bind="doc.coordinates.coordinates"></span>
+            </div>
 			<h4 class="list-group-item-heading" data-ng-bind="doc.name"></h4>
         </a>
     </div>
